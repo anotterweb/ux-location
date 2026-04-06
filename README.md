@@ -1,3 +1,7 @@
+# AnotterWebUxLocationBundle
+
+A Symfony bundle providing an extra form field to select a location using an interactive Mapbox map. It integrates seamlessly with Symfony UX (Stimulus & AssetMapper).
+
 Installation
 ============
 
@@ -36,6 +40,15 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    AnotterWeb\UxLocation\AnotterWebUxLocationBundle::class => ['all' => true],
+    Anotterweb\UxLocation\AnotterWebUxLocationBundle::class => ['all' => true],
 ];
 ```
+
+Documentation
+=============
+
+Full documentation is available in the [`doc/index.md`](doc/index.md) file, including:
+- Requirements and configuration (Mapbox access token)
+- JavaScript setup (AssetMapper)
+- Usage in Symfony forms and Twig
+- Available `LocationType` options

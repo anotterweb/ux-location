@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class AnotterWebUxLocationBundle extends AbstractBundle
+class AnotterwebUxLocationBundle extends AbstractBundle
 {
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
@@ -39,7 +39,7 @@ class AnotterWebUxLocationBundle extends AbstractBundle
     {
         if ($builder->hasExtension('twig')) {
             $builder->prependExtensionConfig('twig', [
-                'form_themes' => ['@AnotterWebUxLocation/location_form_theme.html.twig'],
+                'form_themes' => ['@AnotterwebUxLocation/location_form_theme.html.twig'],
             ]);
         }
 
