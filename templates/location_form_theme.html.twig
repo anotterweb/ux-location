@@ -1,0 +1,9 @@
+{% block location_widget %}
+    <div {{ stimulus_controller('@anotterweb/ux-location/location', {lat: default_lat, lng: default_lng, zoom: default_zoom, style: map_style, token: access_token}) }}>
+        {% set target = stimulus_target('@anotterweb/ux-location/location', 'input') %}
+        {% set attr = attr|merge({(target|keys[0]): target|first}) %}
+        {{ block('hidden_widget') }}
+
+        <div {{ stimulus_target('@anotterweb/ux-location/location', 'map') }} style="height: {{ map_height|e('html_attr') }}; width: 100%; z-index: 1;"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{
+  "name": "@anotterweb/ux-location",
+  "description": "JavaScript Location functionality for Symfony",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "symfony-ux"
+  ],
+  "symfony": {
+    "controllers": {
+      "location": {
+        "main": "dist/controller.js",
+        "fetch": "eager",
+        "enabled": true,
+        "autoimport": {
+        }
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.0.0",
+      "mapbox-gl": "^3.21.0",
+      "mapbox-gl/dist/mapbox-gl.css": "^3.21.0"
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "mapbox-gl": "^3.21.0",
+    "mapbox-gl/dist/mapbox-gl.css": "^3.21.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "anotterweb/ux-location",
+  "type": "symfony-bundle",
+  "description": "A Symfony bundle providing extra form field to select location with Mapbox map",
+  "keywords": [
+    "symfony-ux"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Luc Hidalgo",
+      "email": "luchidalgo@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Anotterweb\\UxLocation\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.4",
+    "symfony/http-kernel": "^8.0",
+    "symfony/dependency-injection": "^8.0",
+    "symfony/asset-mapper": "^8.0",
+    "symfony/config": "^8.0",
+    "symfony/form": "^8.0"
+  }
+}

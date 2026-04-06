@@ -1,0 +1,53 @@
+<?php
+
+namespace Anotterweb\UxLocation;
+
+use Symfony\Component\AssetMapper\AssetMapperInterface;
+use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+
+class AnotterWebUxLocationBundle extends AbstractBundle
+{
+    public function configure(DefinitionConfigurator $definition): void
+    {
+        $definition->rootNode()
+            ->children()
+                ->arrayNode('mapbox')
+                    ->children()
+                        ->scalarNode('access_token')->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
+    {
+        if (!$this->isAssetMapperAvailable($builder)) {
+            return;
+        }
+
+        $builder->prependExtensionConfig('framework', [
+            'asset_mapper' => [
+                'paths' => [
+                    __DIR__ . '/../assets/dist' => '@anotterweb/ux-location',
+                ],
+            ],
+        ]);
+    }
+
+    private function isAssetMapperAvailable(ContainerBuilder $builder): bool
+    {
+        if (!interface_exists(AssetMapperInterface::class)) {
+            return false;
+        }
+
+        $bundlesMetadata = $builder->getParameter('kernel.bundles_metadata');
+        if (!isset($bundlesMetadata['FrameworkBundle'])) {
+            return false;
+        }
+
+        return is_file($bundlesMetadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php');
+    }
+}
