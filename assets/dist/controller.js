@@ -50,7 +50,7 @@ export default class extends Controller {
                 this.marker = new mapboxgl.Marker().setLngLat(e.lngLat).addTo(this.map);
             }
 
-            const newValue = `${e.latlng.lat},${e.latlng.lng}`;
+            const newValue = `${e.lngLat.lat},${e.lngLat.lng}`;
             this.inputTarget.value = newValue;
             this.inputTarget.dispatchEvent(new Event('change', { bubbles: true }));
         });
