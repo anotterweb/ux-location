@@ -36,7 +36,7 @@ export default class extends Controller {
             container: this.mapTarget,
             style: this.styleValue,
             center: [initialLng, initialLat],
-            zoom: hasMarker ? 16 : this.zoomValue
+            zoom: hasMarker ? 18 : this.zoomValue
         });
 
         this.map.addControl(new mapboxgl.NavigationControl());
