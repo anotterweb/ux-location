@@ -20,6 +20,7 @@ export default class extends Controller {
     connect() {
         let initialLat = this.latValue;
         let initialLng = this.lngValue;
+        let hasMarker = false;
         const inputValue = this.inputTarget.value;
         if (inputValue) {
             const parts = inputValue.split(',');
