@@ -21,7 +21,7 @@ php bin/console importmap:require mapbox-gl mapbox-gl/dist/mapbox-gl.css
 To use the bundle, you need to configure your Mapbox access token. Create or update the `config/packages/anotter_web_ux_location.yaml` file:
 
 ```yaml
-anotter_web_ux_location:
+anotterweb_ux_location:
     # Required: Your Mapbox access token
     mapbox_access_token: '%env(MAPBOX_ACCESS_TOKEN)%'
     
