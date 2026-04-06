@@ -30,7 +30,6 @@ class AnotterWebUxLocationBundle extends AbstractBundle
                 ->end()
                 ->scalarNode('default_map_style')
                     ->defaultValue('mapbox://styles/mapbox/standard')
-                    ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
             ->end();
