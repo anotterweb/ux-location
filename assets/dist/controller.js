@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -39,8 +39,20 @@ export default class extends Controller {
             zoom: this.zoomValue
         });
 
+        this.map.addControl(new mapboxgl.NavigationControl());
+
+        const geolocate = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        })
+        this.map.addControl(geolocate);
+
         if (hasMarker) {
             this.marker = new mapboxgl.Marker().setLngLat([initialLng, initialLat]).addTo(this.map);
+        } else {
+            geolocate.trigger();
         }
 
         this.map.on('click', (e) => {
@@ -52,7 +64,7 @@ export default class extends Controller {
 
             const newValue = `${e.lngLat.lat},${e.lngLat.lng}`;
             this.inputTarget.value = newValue;
-            this.inputTarget.dispatchEvent(new Event('change', { bubbles: true }));
+            this.inputTarget.dispatchEvent(new Event('change', {bubbles: true}));
         });
     }
 
