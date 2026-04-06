@@ -24,6 +24,12 @@ class AnotterWebUxLocationBundle extends AbstractBundle
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
     {
+        if ($builder->hasExtension('twig')) {
+            $builder->prependExtensionConfig('twig', [
+                'form_themes' => ['@AnotterWebUxLocation/location_form_theme.html.twig'],
+            ]);
+        }
+
         if (!$this->isAssetMapperAvailable($builder)) {
             return;
         }

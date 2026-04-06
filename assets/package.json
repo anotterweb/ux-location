@@ -11,9 +11,7 @@
       "location": {
         "main": "dist/controller.js",
         "fetch": "eager",
-        "enabled": true,
-        "autoimport": {
-        }
+        "enabled": true
       }
     },
     "importmap": {
