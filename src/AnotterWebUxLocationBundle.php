@@ -16,6 +16,7 @@ class AnotterWebUxLocationBundle extends AbstractBundle
         $container->services()
             ->set('anotter_web_ux_location.location_type', LocationType::class)
             ->arg('$mapboxAccessToken', $config['mapbox_access_token'])
+            ->arg('$defaultMapStyle', $config['default_map_style'])
             ->tag('form.type');
     }
 
@@ -24,6 +25,11 @@ class AnotterWebUxLocationBundle extends AbstractBundle
         $definition->rootNode()
             ->children()
                 ->scalarNode('mapbox_access_token')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('default_map_style')
+                    ->defaultValue('mapbox://styles/mapbox/standard')
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()

@@ -12,11 +12,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class LocationType extends AbstractType
 {
     private string $mapboxAccessToken;
+    private string $defaultMapStyle;
 
     public function __construct(
-        string $mapboxAccessToken
+        string $mapboxAccessToken,
+        string $defaultMapStyle,
     ) {
         $this->mapboxAccessToken = $mapboxAccessToken;
+        $this->defaultMapStyle = $defaultMapStyle;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -26,7 +29,7 @@ class LocationType extends AbstractType
             'default_lat' => 48.8566,
             'default_lng' => 2.3522,
             'map_height' => '300px',
-            'map_style' => 'mapbox://styles/mapbox/standard',
+            'map_style' => $this->defaultMapStyle,
             'access_token' => $this->mapboxAccessToken
         ]);
 
