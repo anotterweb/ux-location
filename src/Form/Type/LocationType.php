@@ -2,6 +2,7 @@
 
 namespace Anotterweb\UxLocation\Form\Type;
 
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
@@ -10,6 +11,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LocationType extends AbstractType
 {
+    private string $mapboxAccessToken;
+
+    public function __construct(
+        string $mapboxAccessToken
+    ) {
+        $this->mapboxAccessToken = $mapboxAccessToken;
+    }
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -18,7 +27,7 @@ class LocationType extends AbstractType
             'default_lng' => 2.3522,
             'map_height' => '300px',
             'map_style' => 'mapbox://styles/mapbox/standard',
-            'access_token' => ''
+            'access_token' => $this->mapboxAccessToken
         ]);
 
         $resolver->setAllowedTypes('default_zoom', 'int');

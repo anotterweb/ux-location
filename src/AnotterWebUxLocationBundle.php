@@ -2,6 +2,7 @@
 
 namespace Anotterweb\UxLocation;
 
+use Anotterweb\UxLocation\Form\Type\LocationType;
 use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -10,14 +11,21 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class AnotterWebUxLocationBundle extends AbstractBundle
 {
+    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
+    {
+        $container->services()
+            ->set('anotter_web_ux_location.location_type', LocationType::class)
+            ->arg('$mapboxAccessToken', $config['mapbox_access_token'])
+            ->tag('form.type');
+    }
+
     public function configure(DefinitionConfigurator $definition): void
     {
         $definition->rootNode()
             ->children()
-                ->arrayNode('mapbox')
-                    ->children()
-                        ->scalarNode('access_token')->end()
-                    ->end()
+                ->scalarNode('mapbox_access_token')
+                    ->isRequired()
+                    ->cannotBeEmpty()
                 ->end()
             ->end();
     }
@@ -30,17 +38,15 @@ class AnotterWebUxLocationBundle extends AbstractBundle
             ]);
         }
 
-        if (!$this->isAssetMapperAvailable($builder)) {
-            return;
-        }
-
-        $builder->prependExtensionConfig('framework', [
-            'asset_mapper' => [
-                'paths' => [
-                    __DIR__ . '/../assets/dist' => '@anotterweb/ux-location',
+        if ($this->isAssetMapperAvailable($builder)) {
+            $builder->prependExtensionConfig('framework', [
+                'asset_mapper' => [
+                    'paths' => [
+                        __DIR__ . '/../assets/dist' => '@anotterweb/ux-location',
+                    ],
                 ],
-            ],
-        ]);
+            ]);
+        }
     }
 
     private function isAssetMapperAvailable(ContainerBuilder $builder): bool
