@@ -13,7 +13,7 @@ class LocationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'default_zoom' => 14,
+            'default_zoom' => 5,
             'default_lat' => 48.8566,
             'default_lng' => 2.3522,
             'map_height' => '300px',

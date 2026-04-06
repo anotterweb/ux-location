@@ -36,25 +36,20 @@ export default class extends Controller {
             container: this.mapTarget,
             style: this.styleValue,
             center: [initialLng, initialLat],
-            zoom: this.zoomValue
+            zoom: hasMarker ? 16 : this.zoomValue
         });
 
         this.map.addControl(new mapboxgl.NavigationControl());
 
-        const geolocate = new mapboxgl.GeolocateControl({
+        this.map.addControl(new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: true
             },
             showUserLocation: false
-        })
-        this.map.addControl(geolocate);
+        }));
 
         if (hasMarker) {
             this.marker = new mapboxgl.Marker().setLngLat([initialLng, initialLat]).addTo(this.map);
-        } else {
-            this.map.on('load', () => {
-                geolocate.trigger();
-            });
         }
 
         this.map.on('click', (e) => {
