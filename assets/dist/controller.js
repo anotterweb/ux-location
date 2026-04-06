@@ -44,15 +44,16 @@ export default class extends Controller {
         const geolocate = new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: true
-            },
-            trackUserLocation: true
+            }
         })
         this.map.addControl(geolocate);
 
         if (hasMarker) {
             this.marker = new mapboxgl.Marker().setLngLat([initialLng, initialLat]).addTo(this.map);
         } else {
-            geolocate.trigger();
+            this.map.on('load', () => {
+                geolocate.trigger();
+            });
         }
 
         this.map.on('click', (e) => {
