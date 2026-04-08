@@ -16,7 +16,7 @@ class LocationType extends AbstractType
     private int $defaultZoom;
     private float $defaultLat;
     private float $defaultLng;
-    private string $mapHeight;
+    private string $defaultMapHeight;
 
     public function __construct(
         string $mapboxAccessToken,
@@ -24,14 +24,14 @@ class LocationType extends AbstractType
         int $defaultZoom,
         float $defaultLat,
         float $defaultLng,
-        string $mapHeight,
+        string $defaultMapHeight,
     ) {
         $this->mapboxAccessToken = $mapboxAccessToken;
         $this->defaultMapStyle = $defaultMapStyle;
         $this->defaultZoom = $defaultZoom;
         $this->defaultLat = $defaultLat;
         $this->defaultLng = $defaultLng;
-        $this->mapHeight = $mapHeight;
+        $this->defaultMapHeight = $defaultMapHeight;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -40,7 +40,7 @@ class LocationType extends AbstractType
             'default_zoom' => $this->defaultZoom,
             'default_lat' => $this->defaultLat,
             'default_lng' => $this->defaultLng,
-            'map_height' => $this->mapHeight,
+            'map_height' => $this->defaultMapHeight,
             'map_style' => $this->defaultMapStyle,
             'access_token' => $this->mapboxAccessToken
         ]);

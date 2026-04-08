@@ -32,7 +32,7 @@ anotterweb_ux_location:
     # default_zoom: 4
     # default_lat: 48.8566
     # default_lng: 2.3522
-    # map_height: '300px'
+    # default_map_height: '300px'
 ```
 
 ### Required Configuration
@@ -43,7 +43,7 @@ anotterweb_ux_location:
 * `default_zoom`: The initial zoom level of the map when it loads (default: `4`).
 * `default_lat`: The default latitude to center the map on (default: `48.8566`).
 * `default_lng`: The default longitude to center the map on (default: `2.3522`).
-* `map_height`: The CSS height applied to the map container (default: `'300px'`).
+* `default_map_height`: The CSS height applied to the map container (default: `'300px'`).
 
 ## Usage
 

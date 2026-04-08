@@ -20,7 +20,7 @@ class AnotterwebUxLocationBundle extends AbstractBundle
             ->arg('$defaultZoom', $config['default_zoom'])
             ->arg('$defaultLat', $config['default_lat'])
             ->arg('$defaultLng', $config['default_lng'])
-            ->arg('$mapHeight', $config['map_height'])
+            ->arg('$defaultMapHeight', $config['default_map_height'])
             ->tag('form.type');
     }
 
@@ -48,7 +48,7 @@ class AnotterwebUxLocationBundle extends AbstractBundle
                     ->defaultValue(2.3522)
                     ->cannotBeEmpty()
                 ->end()
-                ->scalarNode('map_height')
+                ->scalarNode('default_map_height')
                     ->defaultValue('300px')
                     ->cannotBeEmpty()
                 ->end()
