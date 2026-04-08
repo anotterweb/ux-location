@@ -30,7 +30,7 @@ class LocationTypeTest extends TestCase
     {
         $type = new LocationType('token', 'style', 1, 2.0, 3.0, '200px');
         $view = new FormView();
-        $form = $this->createMock(FormInterface::class);
+        $form = $this->createStub(FormInterface::class);
 
         $options = [
             'default_zoom' => 10,
