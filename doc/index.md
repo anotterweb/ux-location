@@ -88,5 +88,5 @@ The `LocationType` provides several options to customize the appearance and beha
 | `default_lat` | `numeric` | Value from bundle configuration (`48.8566`) | The default latitude to center the map on. |
 | `default_lng` | `numeric` | Value from bundle configuration (`2.3522`) | The default longitude to center the map on. |
 | `map_height` | `string` | Value from bundle configuration (`'300px'`) | The CSS height applied to the map container. |
-| `map_style` | `string` | Value from bundle configuration | The Mapbox style URL to use for this specific field. Overrides the global `default_map_style`. |
-| `access_token` | `string` | Value from bundle configuration | The Mapbox access token to use. Overrides the global `mapbox_access_token`. |
+| `map_style` | `string` | Value from bundle configuration (`'mapbox://styles/mapbox/standard'`) | The Mapbox style URL to use for this specific field. |
+| `access_token` | `string` | Value from bundle configuration | The Mapbox access token to use. |
