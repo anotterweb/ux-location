@@ -10,6 +10,18 @@ Install the bundle using Composer:
 composer require anotterweb/ux-location
 ```
 
+Then, enable the bundle by adding it to the list of registered bundles
+in the `config/bundles.php` file of your project:
+
+```php
+// config/bundles.php
+
+return [
+    // ...
+    Anotterweb\UxLocation\AnotterWebUxLocationBundle::class => ['all' => true],
+];
+```
+
 Since this bundle relies on Symfony UX and Mapbox, you also need to make sure the JavaScript dependencies are installed. If you are using AssetMapper, run:
 
 ```bash
