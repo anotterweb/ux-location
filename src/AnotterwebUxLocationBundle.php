@@ -17,6 +17,10 @@ class AnotterwebUxLocationBundle extends AbstractBundle
             ->set('anotter_web_ux_location.location_type', LocationType::class)
             ->arg('$mapboxAccessToken', $config['mapbox_access_token'])
             ->arg('$defaultMapStyle', $config['default_map_style'])
+            ->arg('$defaultZoom', $config['default_zoom'])
+            ->arg('$defaultLat', $config['default_lat'])
+            ->arg('$defaultLng', $config['default_lng'])
+            ->arg('$mapHeight', $config['map_height'])
             ->tag('form.type');
     }
 
@@ -30,6 +34,22 @@ class AnotterwebUxLocationBundle extends AbstractBundle
                 ->end()
                 ->scalarNode('default_map_style')
                     ->defaultValue('mapbox://styles/mapbox/standard')
+                    ->cannotBeEmpty()
+                ->end()
+                ->integerNode('default_zoom')
+                    ->defaultValue(4)
+                    ->cannotBeEmpty()
+                ->end()
+                ->floatNode('default_lat')
+                    ->defaultValue(48.8566)
+                    ->cannotBeEmpty()
+                ->end()
+                ->floatNode('default_lng')
+                    ->defaultValue(2.3522)
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('map_height')
+                    ->defaultValue('300px')
                     ->cannotBeEmpty()
                 ->end()
             ->end();

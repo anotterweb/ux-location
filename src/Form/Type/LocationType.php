@@ -13,22 +13,34 @@ class LocationType extends AbstractType
 {
     private string $mapboxAccessToken;
     private string $defaultMapStyle;
+    private int $defaultZoom;
+    private float $defaultLat;
+    private float $defaultLng;
+    private string $mapHeight;
 
     public function __construct(
         string $mapboxAccessToken,
         string $defaultMapStyle,
+        int $defaultZoom,
+        float $defaultLat,
+        float $defaultLng,
+        string $mapHeight,
     ) {
         $this->mapboxAccessToken = $mapboxAccessToken;
         $this->defaultMapStyle = $defaultMapStyle;
+        $this->defaultZoom = $defaultZoom;
+        $this->defaultLat = $defaultLat;
+        $this->defaultLng = $defaultLng;
+        $this->mapHeight = $mapHeight;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'default_zoom' => 4,
-            'default_lat' => 48.8566,
-            'default_lng' => 2.3522,
-            'map_height' => '300px',
+            'default_zoom' => $this->defaultZoom,
+            'default_lat' => $this->defaultLat,
+            'default_lng' => $this->defaultLng,
+            'map_height' => $this->mapHeight,
             'map_style' => $this->defaultMapStyle,
             'access_token' => $this->mapboxAccessToken
         ]);

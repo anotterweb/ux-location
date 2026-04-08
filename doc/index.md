@@ -18,7 +18,7 @@ php bin/console importmap:require mapbox-gl mapbox-gl/dist/mapbox-gl.css
 
 ## Configuration
 
-To use the bundle, you need to configure your Mapbox access token. Create or update the `config/packages/anotter_web_ux_location.yaml` file:
+To use the bundle, you need to configure your Mapbox access token. Create or update the `config/packages/anotterweb_ux_location.yaml` file:
 
 ```yaml
 anotterweb_ux_location:
@@ -27,6 +27,12 @@ anotterweb_ux_location:
     
     # Optional: Set a default map style for all LocationType fields
     # default_map_style: 'mapbox://styles/mapbox/standard'
+    
+    # Optional: Default values for map view
+    # default_zoom: 4
+    # default_lat: 48.8566
+    # default_lng: 2.3522
+    # map_height: '300px'
 ```
 
 ### Required Configuration
@@ -34,6 +40,10 @@ anotterweb_ux_location:
 
 ### Optional Configuration
 * `default_map_style`: Allows you to globally change the style of the Mapbox map. By default, it uses `mapbox://styles/mapbox/standard`.
+* `default_zoom`: The initial zoom level of the map when it loads (default: `4`).
+* `default_lat`: The default latitude to center the map on (default: `48.8566`).
+* `default_lng`: The default longitude to center the map on (default: `2.3522`).
+* `map_height`: The CSS height applied to the map container (default: `'300px'`).
 
 ## Usage
 
@@ -74,9 +84,9 @@ The `LocationType` provides several options to customize the appearance and beha
 
 | Option | Type | Default Value | Description |
 |--------|------|---------------|-------------|
-| `default_zoom` | `int` | `4` | The initial zoom level of the map when it loads. |
-| `default_lat` | `numeric` | `48.8566` (Paris) | The default latitude to center the map on. |
-| `default_lng` | `numeric` | `2.3522` (Paris) | The default longitude to center the map on. |
-| `map_height` | `string` | `'300px'` | The CSS height applied to the map container. |
+| `default_zoom` | `int` | Value from bundle configuration (`4`) | The initial zoom level of the map when it loads. |
+| `default_lat` | `numeric` | Value from bundle configuration (`48.8566`) | The default latitude to center the map on. |
+| `default_lng` | `numeric` | Value from bundle configuration (`2.3522`) | The default longitude to center the map on. |
+| `map_height` | `string` | Value from bundle configuration (`'300px'`) | The CSS height applied to the map container. |
 | `map_style` | `string` | Value from bundle configuration | The Mapbox style URL to use for this specific field. Overrides the global `default_map_style`. |
 | `access_token` | `string` | Value from bundle configuration | The Mapbox access token to use. Overrides the global `mapbox_access_token`. |
