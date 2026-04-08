@@ -24,5 +24,9 @@
     "symfony/asset-mapper": "^8.0",
     "symfony/config": "^8.0",
     "symfony/form": "^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^13.1",
+    "symfony/phpunit-bridge": "^8.0"
   }
 }

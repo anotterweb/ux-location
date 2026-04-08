@@ -16,3 +16,7 @@ composer *args:
 # Run php command
 php *args:
   docker run -it --rm -u {{current_user_group}} -v "{{current_dir}}:/app" -w /app {{php_image}} php {{args}}
+
+# Run tests
+test *args:
+  docker run -it --rm -u {{current_user_group}} -v "{{current_dir}}:/app" -w /app {{php_image}} vendor/bin/phpunit {{args}}
