@@ -49,16 +49,11 @@ export default class extends Controller {
         }));
 
         if (hasMarker) {
-            this.marker = new mapboxgl.Marker().setLngLat([initialLng, initialLat]).addTo(this.map);
+            createOrUpdateMarker([initialLng, initialLat]);
         }
 
         this.map.on('click', (e) => {
-            if (this.marker) {
-                this.marker.setLngLat(e.lngLat);
-            } else {
-                this.marker = new mapboxgl.Marker().setLngLat(e.lngLat).addTo(this.map);
-            }
-
+            createOrUpdateMarker(e.lngLat);
             const newValue = `${e.lngLat.lat},${e.lngLat.lng}`;
             this.inputTarget.value = newValue;
             this.inputTarget.dispatchEvent(new Event('change', {bubbles: true}));
@@ -68,6 +63,16 @@ export default class extends Controller {
     disconnect() {
         if (this.map) {
             this.map.remove();
+        }
+    }
+
+    createOrUpdateMarker(lngLat) {
+        if (this.marker) {
+            this.marker.setLngLat(lngLat);
+        } else {
+            const element = document.createElement('div');
+            element.className = 'ux-location-marker';
+            this.marker = new mapboxgl.Marker(element).setLngLat(lngLat).addTo(this.map);
         }
     }
 }
