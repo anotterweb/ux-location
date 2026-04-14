@@ -49,11 +49,11 @@ export default class extends Controller {
         }));
 
         if (hasMarker) {
-            createOrUpdateMarker([initialLng, initialLat]);
+            this.createOrUpdateMarker([initialLng, initialLat]);
         }
 
         this.map.on('click', (e) => {
-            createOrUpdateMarker(e.lngLat);
+            this.createOrUpdateMarker(e.lngLat);
             const newValue = `${e.lngLat.lat},${e.lngLat.lng}`;
             this.inputTarget.value = newValue;
             this.inputTarget.dispatchEvent(new Event('change', {bubbles: true}));
