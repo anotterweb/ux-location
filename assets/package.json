@@ -13,7 +13,7 @@
         "fetch": "eager",
         "enabled": true,
         "autoimport": {
-          "@anotterweb/ux-location/dist/style.min.css": true
+          "@anotterweb/ux-location/dist/style.css": true
         }
       }
     },
