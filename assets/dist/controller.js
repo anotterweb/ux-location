@@ -72,7 +72,10 @@ export default class extends Controller {
         } else {
             const element = document.createElement('div');
             element.className = 'ux-location-marker';
-            this.marker = new mapboxgl.Marker(element).setLngLat(lngLat).addTo(this.map);
+            this.marker = new mapboxgl.Marker({
+                element: element,
+                anchor: 'bottom'
+            }).setLngLat(lngLat).addTo(this.map);
         }
     }
 }
