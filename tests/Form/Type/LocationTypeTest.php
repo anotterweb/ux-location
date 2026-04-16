@@ -13,7 +13,7 @@ class LocationTypeTest extends TestCase
 {
     public function testConfigureOptions(): void
     {
-        $type = new LocationType('my-token', 'mapbox://styles', 5, 42.0, 2.0, '400px');
+        $type = new LocationType('my-token', 'mapbox://styles', 5, 18, 42.0, 2.0, '400px');
         $resolver = new OptionsResolver();
         $type->configureOptions($resolver);
 
@@ -21,6 +21,7 @@ class LocationTypeTest extends TestCase
         $this->assertEquals('my-token', $options['access_token']);
         $this->assertEquals('mapbox://styles', $options['map_style']);
         $this->assertEquals(5, $options['default_zoom']);
+        $this->assertEquals(18, $options['default_selected_zoom']);
         $this->assertEquals(42.0, $options['default_lat']);
         $this->assertEquals(2.0, $options['default_lng']);
         $this->assertEquals('400px', $options['map_height']);
@@ -28,12 +29,13 @@ class LocationTypeTest extends TestCase
 
     public function testBuildView(): void
     {
-        $type = new LocationType('token', 'style', 1, 2.0, 3.0, '200px');
+        $type = new LocationType('token', 'style', 1, 18, 2.0, 3.0, '200px');
         $view = new FormView();
         $form = $this->createStub(FormInterface::class);
 
         $options = [
             'default_zoom' => 10,
+            'default_selected_zoom' => 17,
             'default_lat' => 11.0,
             'default_lng' => 12.0,
             'map_height' => '500px',
@@ -45,6 +47,7 @@ class LocationTypeTest extends TestCase
 
         $this->assertArrayHasKey('default_zoom', $view->vars);
         $this->assertEquals(10, $view->vars['default_zoom']);
+        $this->assertEquals(17, $view->vars['default_selected_zoom']);
         $this->assertEquals(11.0, $view->vars['default_lat']);
         $this->assertEquals(12.0, $view->vars['default_lng']);
         $this->assertEquals('500px', $view->vars['map_height']);
@@ -54,7 +57,7 @@ class LocationTypeTest extends TestCase
 
     public function testGetParent(): void
     {
-        $type = new LocationType('token', 'style', 1, 2.0, 3.0, '200px');
+        $type = new LocationType('token', 'style', 1, 18,  2.0, 3.0, '200px');
         $this->assertEquals(TextType::class, $type->getParent());
     }
 }
