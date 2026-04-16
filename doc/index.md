@@ -42,6 +42,7 @@ anotterweb_ux_location:
     
     # Optional: Default values for map view
     # default_zoom: 4
+    # default_selected_zoom: 18
     # default_lat: 48.8566
     # default_lng: 2.3522
     # default_map_height: '300px'
@@ -53,6 +54,7 @@ anotterweb_ux_location:
 ### Optional Configuration
 * `default_map_style`: Allows you to globally change the style of the Mapbox map. By default, it uses `mapbox://styles/mapbox/standard`.
 * `default_zoom`: The initial zoom level of the map when it loads (default: `4`).
+* `default_selected_zoom`: The initial zoom level of the map when it loads with selected value (default: `18`).
 * `default_lat`: The default latitude to center the map on (default: `48.8566`).
 * `default_lng`: The default longitude to center the map on (default: `2.3522`).
 * `default_map_height`: The CSS height applied to the map container (default: `'300px'`).
@@ -94,11 +96,12 @@ The bundle automatically registers the necessary form themes and AssetMapper pat
 
 The `LocationType` provides several options to customize the appearance and behavior of the map per form field:
 
-| Option | Type | Default Value | Description |
-|--------|------|---------------|-------------|
-| `default_zoom` | `int` | Value from bundle configuration (`4`) | The initial zoom level of the map when it loads. |
-| `default_lat` | `numeric` | Value from bundle configuration (`48.8566`) | The default latitude to center the map on. |
-| `default_lng` | `numeric` | Value from bundle configuration (`2.3522`) | The default longitude to center the map on. |
-| `map_height` | `string` | Value from bundle configuration (`'300px'`) | The CSS height applied to the map container. |
-| `map_style` | `string` | Value from bundle configuration (`'mapbox://styles/mapbox/standard'`) | The Mapbox style URL to use for this specific field. |
-| `access_token` | `string` | Value from bundle configuration | The Mapbox access token to use. |
+| Option                  | Type | Default Value                                                         | Description                                                          |
+|-------------------------|------|-----------------------------------------------------------------------|----------------------------------------------------------------------|
+| `default_zoom`          | `int` | Value from bundle configuration (`4`)                                 | The initial zoom level of the map when it loads.                     |
+| `default_selected_zoom` | `int` | Value from bundle configuration (`18`)                                | The initial zoom level of the map when it loads with selected value. |
+| `default_lat`           | `numeric` | Value from bundle configuration (`48.8566`)                           | The default latitude to center the map on.                           |
+| `default_lng`           | `numeric` | Value from bundle configuration (`2.3522`)                            | The default longitude to center the map on.                          |
+| `map_height`            | `string` | Value from bundle configuration (`'300px'`)                           | The CSS height applied to the map container.                         |
+| `map_style`             | `string` | Value from bundle configuration (`'mapbox://styles/mapbox/standard'`) | The Mapbox style URL to use for this specific field.                 |
+| `access_token`          | `string` | Value from bundle configuration                                       | The Mapbox access token to use.                                      |

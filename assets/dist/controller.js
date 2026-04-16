@@ -14,7 +14,8 @@ export default class extends Controller {
         style: String,
         lat: Number,
         lng: Number,
-        zoom: Number
+        zoom: Number,
+        selectedZoom: Number
     };
 
     connect() {
@@ -36,7 +37,7 @@ export default class extends Controller {
             container: this.mapTarget,
             style: this.styleValue,
             center: [initialLng, initialLat],
-            zoom: hasMarker ? 18 : this.zoomValue
+            zoom: hasMarker ? this.selectedZoomValue : this.zoomValue
         });
 
         this.map.addControl(new mapboxgl.NavigationControl());
